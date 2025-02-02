@@ -8,6 +8,7 @@ from langchain_cohere import CohereEmbeddings
 from typing import Any, Dict, List
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 load_dotenv()
+import os
 
 INDEX_NAME = "chatbot2"
 
@@ -16,7 +17,7 @@ def run_llm(query:str, chat_history: List[Dict[str, Any]]=[]):
     docsearch = PineconeVectorStore(index_name=INDEX_NAME , embedding=embeddings)
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.0-flash-exp",
-        api_key="AIzaSyABRx-AaiGx5YY4voEaJrQi8yFbHRw3pKQ",
+        api_key = os.getenv("GOOGLE_API_KEY"),
         temperature=0,
         top_p=0.95,
         top_k=40,

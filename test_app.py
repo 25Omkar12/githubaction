@@ -3,6 +3,7 @@ from unittest.mock import patch, MagicMock
 from langchain.schema import Document
 from app import upload_document, chunking
 from core import run_llm
+import os 
 
 
 @patch("app.PyPDFLoader")  # Mock PyPDFLoader
@@ -153,7 +154,7 @@ def test_run_llm_dependency_initialization(mock_dependencies):
     # Verify LLM initialization
     mock_dependencies['llm'].assert_called_once_with(
         model="gemini-2.0-flash-exp",
-        api_key="AIzaSyABRx-AaiGx5YY4voEaJrQi8yFbHRw3pKQ",
+        api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0,
         top_p=0.95,
         top_k=40,

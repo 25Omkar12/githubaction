@@ -1,0 +1,11 @@
+python-dotenv
+pypdf
+langchain_community
+langchain-google-genai 
+langchain-pinecone
+langchain_openai
+sentence-transformers
+langchain_cohere
+streamlit
+streamlit-chat
+pytest
